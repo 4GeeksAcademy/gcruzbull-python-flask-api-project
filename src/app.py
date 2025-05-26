@@ -19,10 +19,11 @@ def add_new_todo():
     todos.append(dict(request_body))
     return jsonify(todos)
 
-@app.route('/todos/int:1', methods=['DELETE'])
+@app.route('/todos/<int:position>', methods=['DELETE'])
 def delete_todo(position):
     print("This is the position to delete:", position)
-    return 'something'
+    todos.remove(todos[position])
+    return jsonify(todos)
 
 # Estas dos líneas siempre deben estar al final de tu archivo app.py
 
